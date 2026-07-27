@@ -3,260 +3,160 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>UniversoInfinito — Talleres Interactivos</title>
+<title>UniversoInfinito — Elige tu mundo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --paper:#F1EAD6;
+    --paper:#FBF1DE;
     --paper-card:#FFFCF4;
     --ink:#1C1A17;
     --ink-soft:#5C4A38;
-    --red:#E5402C;
-    --red-dark:#B92E1E;
-    --gold:#FFC857;
+    --coral:#E5402C;
+    --coral-dark:#B92E1E;
     --teal:#2FB6A6;
     --teal-dark:#1F8E81;
+    --sunshine:#FFC857;
   }
   *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;height:100%;}
+  html,body{margin:0;padding:0;}
   body{
-    background:
-      radial-gradient(circle at 10% 0%, rgba(255,200,87,.30), transparent 42%),
-      radial-gradient(circle at 92% 90%, rgba(47,182,166,.20), transparent 45%),
-      var(--paper);
     font-family:'Nunito', sans-serif;
     color:var(--ink);
+    background:
+      radial-gradient(circle at 12% 8%, rgba(255,200,87,.35), transparent 40%),
+      radial-gradient(circle at 90% 85%, rgba(47,182,166,.22), transparent 45%),
+      var(--paper);
     min-height:100vh;
     display:flex;
     flex-direction:column;
-  }
-
-  /* ============ MASTHEAD ============ */
-  .masthead{
-    border-bottom:4px solid var(--ink);
-    background:var(--paper-card);
-    padding:14px 18px 0;
-  }
-  .masthead-top{
-    display:flex;
     align-items:center;
-    justify-content:space-between;
-    gap:14px;
-    max-width:1080px;
-    margin:0 auto;
-    flex-wrap:wrap;
+    padding:36px 16px 60px;
   }
-  .brand{display:flex; align-items:center; gap:12px;}
-  .logo-box{
-    width:46px; height:46px; flex:none;
-    background:linear-gradient(180deg, var(--red) 0%, var(--red-dark) 100%);
-    border:3px solid var(--ink);
-    border-radius:10px;
-    display:flex; align-items:center; justify-content:center;
-    font-size:22px;
-    box-shadow:3px 3px 0 var(--ink);
-    transform:rotate(-4deg);
+  h1,h2,h3{font-family:'Baloo 2', sans-serif; font-weight:700; margin:0;}
+
+  .wrap{width:100%; max-width:920px;}
+
+  .masthead{
+    text-align:center;
+    margin-bottom:34px;
   }
-  .brand h1{
-    font-family:'Big Shoulders Display', sans-serif;
-    font-weight:900;
-    font-size:2rem;
-    letter-spacing:.01em;
-    margin:0;
-    line-height:1;
-  }
-  .brand .dateline{
-    margin:2px 0 0;
-    font-size:.72rem;
+  .masthead .kicker{
+    display:inline-block;
     font-weight:800;
-    letter-spacing:.14em;
+    font-size:.8rem;
+    letter-spacing:.16em;
     text-transform:uppercase;
+    color:var(--teal-dark);
+    background:rgba(47,182,166,.14);
+    padding:5px 14px;
+    border-radius:999px;
+    margin-bottom:14px;
+  }
+  .masthead h1{
+    font-size:clamp(2.2rem, 6vw, 3.4rem);
+    line-height:1.05;
+  }
+  .masthead p{
+    margin:12px auto 0;
+    max-width:480px;
     color:var(--ink-soft);
+    font-weight:700;
+    font-size:1.05rem;
   }
 
-  /* medallero */
-  .medallero{
-    display:flex; align-items:center; gap:10px;
-    border:3px solid var(--ink);
-    border-radius:16px;
-    background:var(--paper);
-    padding:8px 14px;
-    box-shadow:3px 3px 0 rgba(28,26,23,.18);
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:22px;
+    margin-top:10px;
   }
-  .jar{
-    position:relative;
-    width:34px; height:34px;
-    border-radius:8px 8px 12px 12px;
-    border:2.5px solid var(--ink);
-    background:rgba(255,255,255,.6);
-    overflow:hidden;
-    flex:none;
-  }
-  .jar-fill{
-    position:absolute; left:0; right:0; bottom:0;
-    background:linear-gradient(180deg, var(--gold), var(--red));
-    height:0%;
-    transition:height .5s cubic-bezier(.34,1.56,.64,1);
-  }
-  .medallero .txt{display:flex; flex-direction:column; line-height:1.15;}
-  .medallero .txt b{font-family:'Big Shoulders Display', sans-serif; font-size:1rem;}
-  .medallero .txt span{font-size:.68rem; font-weight:800; color:var(--ink-soft); text-transform:uppercase; letter-spacing:.08em;}
+  @media(max-width:820px){ .grid{grid-template-columns:1fr;} }
 
-  /* tabs */
-  .tabs{
-    max-width:1080px;
-    margin:14px auto 0;
+  .card{
     display:flex;
-    gap:10px;
-    flex-wrap:wrap;
-    padding-bottom:14px;
-  }
-  .tab{
-    font-family:'Big Shoulders Display', sans-serif;
-    font-weight:800;
-    font-size:1rem;
-    letter-spacing:.02em;
-    display:flex; align-items:center; gap:8px;
-    border:3px solid var(--ink);
-    border-radius:14px 14px 4px 4px;
-    padding:10px 18px;
-    background:var(--paper);
-    color:var(--ink);
-    cursor:pointer;
-    box-shadow:4px 4px 0 var(--ink);
-    transition:transform .12s ease, box-shadow .12s ease, background .12s ease;
-  }
-  .tab:nth-child(1){transform:rotate(-1.3deg);}
-  .tab:nth-child(2){transform:rotate(1deg);}
-  .tab:nth-child(3){transform:rotate(-0.6deg);}
-  .tab:hover{transform:translateY(-2px) rotate(0deg); box-shadow:5px 5px 0 var(--ink);}
-  .tab .dot{width:9px; height:9px; border-radius:50%; background:var(--ink-soft); flex:none;}
-  .tab.active{background:var(--red); color:#fff; transform:rotate(0deg) translateY(-2px);}
-  .tab.active .dot{background:var(--gold);}
-  .tab .visited-mark{font-size:.85rem;}
-
-  /* ============ STAGE (iframes) ============ */
-  .stage-wrap{flex:1; display:flex; flex-direction:column; align-items:center; padding:22px 14px 40px;}
-  .stage{
-    width:100%;
-    max-width:1080px;
+    flex-direction:column;
+    gap:12px;
+    text-align:left;
+    background:var(--paper-card);
     border:3px solid var(--ink);
     border-radius:20px;
-    background:var(--paper-card);
-    box-shadow:6px 6px 0 rgba(28,26,23,.15);
-    overflow:hidden;
-    position:relative;
-    min-height:78vh;
+    padding:26px 22px;
+    box-shadow:6px 6px 0 rgba(28,26,23,.16);
+    text-decoration:none;
+    color:var(--ink);
+    transition:transform .15s ease, box-shadow .15s ease;
   }
-  .stage iframe{
-    display:none;
-    width:100%;
-    height:78vh;
-    border:0;
-    background:var(--paper-card);
+  .card:nth-child(1){ transform:rotate(-1deg); }
+  .card:nth-child(3){ transform:rotate(1deg); }
+  .card:hover{ transform:translateY(-4px) rotate(0deg); box-shadow:8px 8px 0 rgba(28,26,23,.2); }
+
+  .card .icon{
+    font-size:2.4rem;
+    width:64px; height:64px;
+    display:flex; align-items:center; justify-content:center;
+    border:3px solid var(--ink);
+    border-radius:14px;
+    background:var(--sunshine);
   }
-  .stage iframe.active{display:block;}
+  .card h2{ font-size:1.3rem; line-height:1.2; }
+  .card p{ margin:0; color:var(--ink-soft); font-weight:600; font-size:.95rem; line-height:1.45; flex:1; }
+
+  .enter{
+    align-self:flex-start;
+    font-family:'Baloo 2', sans-serif;
+    font-weight:700;
+    font-size:.95rem;
+    border:3px solid var(--ink);
+    border-radius:12px;
+    padding:10px 18px;
+    background:var(--coral);
+    color:#fff;
+    box-shadow:3px 3px 0 var(--ink);
+  }
+  .card:hover .enter{ background:var(--coral-dark); }
 
   footer{
-    text-align:center;
-    padding:18px 14px 26px;
-    font-size:.8rem;
-    font-weight:700;
+    margin-top:40px;
     color:var(--ink-soft);
-  }
-
-  @media(max-width:640px){
-    .brand h1{font-size:1.5rem;}
-    .tabs{justify-content:center;}
-    .stage iframe, .stage{min-height:72vh;}
-    .stage iframe{height:72vh;}
+    font-weight:700;
+    font-size:.85rem;
+    text-align:center;
   }
 </style>
 </head>
 <body>
-
-  <div class="masthead">
-    <div class="masthead-top">
-      <div class="brand">
-        <div class="logo-box">🌀</div>
-        <div>
-          <h1>UniversoInfinito</h1>
-          <p class="dateline">Tres talleres · una sola caja de ideas</p>
-        </div>
-      </div>
-      <div class="medallero">
-        <div class="jar"><div class="jar-fill" id="jarFill"></div></div>
-        <div class="txt">
-          <b id="medalleroCount">0 / 3</b>
-          <span>Mundos explorados</span>
-        </div>
-      </div>
+  <div class="wrap">
+    <div class="masthead">
+      <span class="kicker">Tres mundos, una imprenta</span>
+      <h1>UniversoInfinito</h1>
+      <p>Elige un taller y crea tu propia historia, noticia o periódico. Cada mundo tiene sus propias reglas del juego.</p>
     </div>
 
-    <nav class="tabs" id="tabs">
-      <button class="tab" data-target="frame-dragon" onclick="selectTab('frame-dragon', this)">
-        <span class="dot"></span> El Cronista Prehistórico <span class="visited-mark" id="mark-frame-dragon"></span>
-      </button>
-      <button class="tab" data-target="frame-caja" onclick="selectTab('frame-caja', this)">
-        <span class="dot"></span> La Caja Mágica <span class="visited-mark" id="mark-frame-caja"></span>
-      </button>
-      <button class="tab" data-target="frame-noticias" onclick="selectTab('frame-noticias', this)">
-        <span class="dot"></span> Noticias del Universo X <span class="visited-mark" id="mark-frame-noticias"></span>
-      </button>
-    </nav>
-  </div>
+    <div class="grid">
+      <a class="card" href="caja-magica-historias.html">
+        <span class="icon">📦</span>
+        <h2>La Caja Mágica de Historias</h2>
+        <p>Saca cartas al azar de personaje, escenario y objeto, graba tu voz y arma un cuento sobre la marcha.</p>
+        <span class="enter">Entrar →</span>
+      </a>
 
-  <div class="stage-wrap">
-    <div class="stage">
-      <iframe id="frame-dragon" src="periodico-dragon-marino.html" title="El Cronista Prehistórico"></iframe>
-      <iframe id="frame-caja" src="caja-magica-historias.html" title="La Caja Mágica de Historias"></iframe>
-      <iframe id="frame-noticias" src="noticias-universo-x.html" title="Noticias del Universo X"></iframe>
+      <a class="card" href="noticias-universo-x.html">
+        <span class="icon">🛸</span>
+        <h2>Noticias del Universo X</h2>
+        <p>Redacta titulares imposibles y maqueta tu propio tabloide de sucesos extraterrestres y absurdos.</p>
+        <span class="enter">Entrar →</span>
+      </a>
+
+      <a class="card" href="periodico-dragon-marino.html">
+        <span class="icon">🦕</span>
+        <h2>El Cronista Prehistórico</h2>
+        <p>Diseña un periódico de la era de los dinosaurios, con titulares, columnas y crónicas ilustradas.</p>
+        <span class="enter">Entrar →</span>
+      </a>
     </div>
+
+    <footer>Hecho a mano, hoja por hoja. 📰✨</footer>
   </div>
-
-  <footer>UniversoInfinito · hecho para inventar, dibujar y contar historias</footer>
-
-<script>
-  const IDS = ['frame-dragon','frame-caja','frame-noticias'];
-  const STORAGE_KEY = 'universoinfinito_visitados';
-
-  function getVisited(){
-    try{ return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; }
-    catch(e){ return []; }
-  }
-  function saveVisited(arr){
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
-  }
-  function updateMedallero(){
-    const visited = getVisited();
-    document.getElementById('medalleroCount').textContent = `${visited.length} / 3`;
-    document.getElementById('jarFill').style.height = (visited.length/3*100) + '%';
-    IDS.forEach(id=>{
-      document.getElementById('mark-'+id).textContent = visited.includes(id) ? '✅' : '';
-    });
-  }
-
-  function selectTab(targetId, btn){
-    document.querySelectorAll('.stage iframe').forEach(f=>f.classList.remove('active'));
-    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-    document.getElementById(targetId).classList.add('active');
-    btn.classList.add('active');
-
-    const visited = getVisited();
-    if(!visited.includes(targetId)){
-      visited.push(targetId);
-      saveVisited(visited);
-      updateMedallero();
-    }
-  }
-
-  // arranque: primer mundo activo
-  document.addEventListener('DOMContentLoaded', ()=>{
-    updateMedallero();
-    const firstTab = document.querySelector('.tab');
-    selectTab('frame-dragon', firstTab);
-  });
-</script>
 </body>
 </html>
