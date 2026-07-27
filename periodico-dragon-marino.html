@@ -268,7 +268,7 @@
     <!-- ===================== FASE 1 ===================== -->
     <section class="phase active" id="phase-1">
       <h2 class="phase-title">Fase 1 — Lectura compartida</h2>
-      <p class="lead">Lean juntos la noticia completa. Después, hagan una lluvia de ideas: ¿cuáles son los puntos clave? Escríbanlos como notas y péguenlos en el corcho.</p>
+      <p class="lead">Lee la noticia completa. Después, haz una lluvia de ideas: ¿cuáles son los puntos clave? Escríbelos como notas y pégalos en el corcho.</p>
 
       <div class="article-wire">
         <div class="article-columns" id="articleText"><!-- injected --></div>
@@ -276,7 +276,7 @@
 
       <p class="lead"><strong>Lluvia de ideas:</strong> anota un punto clave por nota y agrégalo al corcho.</p>
       <div class="idea-input-row">
-        <input id="ideaInput" placeholder="Ej: Encontraron un fósil de 180 millones de años...">
+        <input id="ideaInput" placeholder="Ej: Mateo encontró una aleta de piedra dorada en la orilla...">
         <button class="btn" onclick="addIdea()">Fijar en el corcho +</button>
       </div>
       <div class="corkboard" id="corkboard"></div>
@@ -303,13 +303,13 @@
           <div class="field">
             <label>Titular impactante</label>
             <small>Resume la idea principal en una frase corta y llamativa</small>
-            <input id="inputHeadline" placeholder="Ej: ¡Encuentran al Dragón Marino tras 180 millones de años!">
+            <input id="inputHeadline" placeholder="Ej: ¡Un niño descubre al legendario Dragón Marino en la playa!">
           </div>
 
           <div class="field">
             <label>Bajada (subtítulo)</label>
             <small>Una frase extra que complementa el titular</small>
-            <input id="inputSub" placeholder="Ej: Un ictiosauro gigante aparece en una reserva natural del Reino Unido">
+            <input id="inputSub" placeholder="Ej: Una criatura fosilizada de 8 metros aparece en la Costa del Sol">
           </div>
 
           <div class="qa-hint">
@@ -328,17 +328,17 @@
           <div class="two-col">
             <div class="field">
               <label>Pregunta</label>
-              <input id="inputQ" placeholder="Ej: Señor Davis, ¿qué sintió al ver el fósil?">
+              <input id="inputQ" placeholder="Ej: Mateo, ¿qué sentiste al ver la aleta dorada entre las olas?">
             </div>
           </div>
           <div class="field">
             <label>Respuesta (ficticia)</label>
-            <textarea id="inputA" rows="2" placeholder="Ej: ¡Casi se me cae el balde! Pensé que eran raíces, pero eran dientes gigantes..."></textarea>
+            <textarea id="inputA" rows="2" placeholder="Ej: ¡Casi se me cae el balde de caracoles! Pensé que era una roca, pero era una aleta gigante..."></textarea>
           </div>
 
           <div class="field">
             <label>Pie de foto de la ilustración</label>
-            <input id="inputCaption" placeholder="Ej: Así lucía el Dragón Marino hace 180 millones de años">
+            <input id="inputCaption" placeholder="Ej: Así lucía el Dragón Marino de las Golondrinas hace millones de años">
           </div>
 
         </div>
@@ -407,7 +407,7 @@
 
   </main>
 
-  <footer class="credit">Actividad basada en la noticia "El hallazgo del dragón marino"</footer>
+  <footer class="credit">Actividad basada en la noticia "El Dragón Marino de las Golondrinas"</footer>
 </div>
 
 <div class="stamp-overlay" id="stampOverlay" style="position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.4);z-index:50;" onclick="this.style.display='none'">
@@ -424,10 +424,13 @@ document.getElementById('dateLine').textContent = new Date().toLocaleDateString(
 /* ------------ Article text ------------- */
 const articleParas = [
 "En las playas de la Costa del Sol, un grupo de niños descubrió algo increíble durante una caminata por la orilla. Lo que parecía ser un tronco gigante cubierto de algas y conchas brillantes resultó ser los restos fosilizados de una criatura marina nunca antes vista: el legendario Dragón Marino de las Golondrinas.",
-"Todo ocurrió una mañana después de una fuerte tormenta. Mateo, un niño de 9 años que juntaba caracoles con su abuelo, notó que entre las olas sobresalía una gran aleta de piedra con destellos dorados. Sorprendidos por el hallazgo, avisaron de inmediato a la bióloga marina Lucía Torres y a su equipo de científicos.",  
-"Tras varias horas de trabajo usando palas de mano y pinceles de arena, los investigadores desenterraron una criatura fosilizada de 8 metros de largo, con un cuello largo, escamas endurecidas por el tiempo y unos colmillos curvos que usaba para atrapar peces gigantes en la antigüedad.", 
+"Todo ocurrió una mañana después de una fuerte tormenta. Mateo, un niño de 9 años que juntaba caracoles con su abuelo, notó que entre las olas sobresalía una gran aleta de piedra con destellos dorados. Sorprendidos por el hallazgo, avisaron de inmediato a la bióloga marina Lucía Torres y a su equipo de científicos.",
+"Tras varias horas de trabajo usando palas de mano y pinceles de arena, los investigadores desenterraron una criatura fosilizada de 8 metros de largo, con un cuello largo, escamas endurecidas por el tiempo y unos colmillos curvos que usaba para atrapar peces gigantes en la antigüedad.",
 "Según los expertos, este espécimen vivió en las profundidades del océano Pacífico hace millones de años. La doctora Lucía Torres declaró a los medios que este descubrimiento demuestra que los mares antiguos escondían criaturas míticas que hoy solo conocemos en los libros.",
 "Los restos del Dragón Marino serán llevados al Museo de Historia Natural para ser restaurados. Mientras tanto, el alcalde de la ciudad anunció que construirán una estatua en la playa en honor a Mateo y a su abuelo por salvar este valioso tesoro científico."
+];
+const articleDiv = document.getElementById('articleText');
+articleParas.forEach(t=>{
   const p = document.createElement('p');
   p.textContent = t;
   articleDiv.appendChild(p);
